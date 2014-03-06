@@ -1,38 +1,17 @@
 #include<stdio.h>
-
-#define ZERO 0
-#define ONE 1
-#define MAX 255
-void clearScr();
-void about();
-char my_flush();
-void show_help();
-void print_line();
-unsigned char preview();
-unsigned char menu();
-unsigned char choiseKey();
-unsigned int enter_size();
-int program();
-struct Lines
-{
-
-long int series1;
-long int series2;
-
-};
-
+#include"prototype.h"
 
 /* MAIN FUNCTION */
 int main()
 
 {
-    program();
+    Program();
 
     return ZERO;
 }
 
 /* PROGRAM FUNCTION */
-int program()
+int Program()
 {
     char exit1 = 'y';
     unsigned char size;
@@ -40,20 +19,20 @@ int program()
     while(exit1 != 'n')
 
     {
-        menu( );
-        print_line();
+        Menu( );
+        Print_line();
 
-        size = enter_size();
+        size = Enter_size();
         printf("size %d", size);
 
 
         puts("\nDo you want one more time?( y / n ) : ");
         exit1 = getchar( );
-        my_flush( );
+        My_flush( );
         if( exit1 == 'n' )
         {
-            clearScr();
-            about();
+            ClearScr();
+            About();
             puts("\tGOOD LUCK !!!\n");
         }
 
@@ -64,14 +43,14 @@ int program()
 }
 
 /* MENU FUNCTION */
-unsigned char menu()
+unsigned char Menu()
 {
 	char ch;
 
-    clearScr();
-    preview();
+    ClearScr();
+    Preview();
 
-	ch = choiseKey();
+    ch = ChoiseKey();
 
 	
     return ZERO;
@@ -79,37 +58,37 @@ unsigned char menu()
 
 
 /* PREVIEW FUNCTION */
-unsigned char preview()
+unsigned char Preview()
 {
 	
     puts( "____ Program which change elements from 2 series ____\n" );
-	print_line();
+    Print_line();
     puts("\n\t- MENU -\nChoose your option : \n");
     puts("\n1) h -key for help \"h\"\n");
     puts("\n2) w -key for normally work \"w\"\n");
     puts("\n3) a -key for about \"a\"\n");
 
-	print_line();
+    Print_line();
     puts("Please choose your key\n");
 	
     return ZERO;
 }
 /* PRINT_LINE FUNCTION */
-void print_line()
+void Print_line()
 {
 
     puts( "______________________________________________________________________________\n" );
 
 }
 /* choiseKey FUNCTION */
-unsigned char choiseKey()
+unsigned char ChoiseKey()
 {
     unsigned char choise;
 
     while( ONE )
 	{
         scanf("%c", &choise);
-		my_flush();
+        My_flush();
 		
         switch (choise)
         {
@@ -118,17 +97,17 @@ unsigned char choiseKey()
                 break;
 
             case 'h' :
-                show_help();
+                Show_help();
                 break;
 
             case 'a' :
-                about();
+                About();
                 break;
 
             default:
                 printf( "Eror! It's \"%c\" wrong option\n", choise );
                 puts( "Please, read - MENU - for perfect choose !\n" );
-                print_line();
+                Print_line();
                 break;
         }
 
@@ -136,7 +115,7 @@ unsigned char choiseKey()
 
 }
 /* MY_FLUSH FUNCTION */
-char my_flush()
+char My_flush()
 {
     char ch;
     while ( ( ( ch = getchar( ) ) != '\n' ) && ( ch != EOF ) )
@@ -149,14 +128,14 @@ char my_flush()
 
 }
 /* ABOUT MASSEGE */
-void about()
+void About()
 {
 
     puts("\n\tCreated by Mykola Hlynka 2014\n\tAll rights reserved\n");
-	print_line();
+    Print_line();
 }
 /* HELP */
-void show_help()
+void Show_help()
 {
 
     puts( "\n\t- HELP - \n" );
@@ -171,17 +150,17 @@ void show_help()
 
 }
 /* ENTER_SIZE FUNCTION */
-unsigned int enter_size()
+unsigned char Enter_size()
 {	
-    unsigned int  digit = ZERO;
+    unsigned char  digit = ZERO;
 	
     while( ONE )
 	{
 		printf("How much elements does you need (limit from 1 to 255 ) :\n");
-		scanf( "%d", &digit );
-		my_flush();
+        scanf( "%c", &digit );
+        My_flush();
 
-		printf("%d ---\n", digit);
+        printf("%u ---\n", digit);
 			
         if( ( digit > MAX ) || ( digit < ZERO ) )
 
@@ -202,7 +181,7 @@ unsigned int enter_size()
 	}
 }
 /* CLEAR SCREEN FUNCTION */
-void clearScr()
+void ClearScr()
 {
 
     system("clear");
