@@ -16,5 +16,6 @@ int Enter_size();
 int Program();
 void Print_vector( const int *pVec, const unsigned int size );
 int VectorScreen( int* pVec1, int* pVec2, const int size);
+void ChangesPosition( int* pVec1, int* pVec2, const unsigned int position1, const unsigned int position2 );
 
 #endif

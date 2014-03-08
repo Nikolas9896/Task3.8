@@ -90,8 +90,8 @@ int Program()
             printf("Enter No. position which do you want change in second vector( from 0 to %d )\n", (size - 1) );
             scanf( "%d", &position2 );
             My_flush();
-            if (  ( !( position1 >= ZERO ) && !( position1 <= size - ONE ) )\
-               || ( !( position2 >= ZERO ) && !( position2 <= size - ONE ) ) )
+            if (  ( ( position1 < ZERO ) || ( position1 >= size ) )\
+               || ( ( position2 < ZERO ) || ( position2 >= size ) ) )
             {
                 printf("WARNING !!! No. position not valid! (That must be from 0 to %d )\n", (size -1) );
             }
@@ -99,12 +99,12 @@ int Program()
             else
             {
                 ChangesPosition( pVec1, pVec2, position1, position2 );
+                VectorScreen(pVec1, pVec2, size);
                 puts( "\nDo you want one more change?( y / n ) : " );
                 stopChange = getchar();
                 My_flush();
             }
         }
-        VectorScreen(pVec1, pVec2, size);
         free( pVec1 );
         free( pVec2 );
         My_flush();
@@ -131,7 +131,6 @@ unsigned char Menu()
     Preview();
     ChoiseKey();
 
-	
     return ZERO;
 }
 
