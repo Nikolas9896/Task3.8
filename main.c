@@ -51,7 +51,7 @@ int Program()
 
         else
         {
-            puts( "WARNING !!! Memory Error! Please restart the Program" );
+            puts( "WARNING !!! Memory Error in first vector! Please restart the program" );
             return -1;
         }
 
@@ -76,11 +76,10 @@ int Program()
 
             else
             {
-                puts( "WARNING !!! Memory Error! Please restart the Program" );
+                puts( "WARNING !!! Memory Error in second vector! Please restart the program" );
                 return -2;
             }
 
-        ClearScr();
         while( stopChange != 'n' )
         {
             VectorScreen( pVec1, pVec2, size );
@@ -90,10 +89,11 @@ int Program()
             printf("Enter No. position which do you want change in second vector( from 0 to %d )\n", (size - 1) );
             scanf( "%d", &position2 );
             My_flush();
+
             if (  ( ( position1 < ZERO ) || ( position1 >= size ) )\
                || ( ( position2 < ZERO ) || ( position2 >= size ) ) )
             {
-                printf("WARNING !!! No. position not valid! (That must be from 0 to %d )\n", (size -1) );
+                printf("WARNING !!! No. position - invalid! (That must be from 0 to %d )\n", (size -1) );
             }
 
             else
@@ -107,15 +107,18 @@ int Program()
         }
         free( pVec1 );
         free( pVec2 );
-        My_flush();
+
         puts( "\nDo you want one more time?( y / n ) : " );
-        My_flush( );
         exit1 = getchar( );
         My_flush( );
         if( exit1 == 'n' )
         {
             ClearScr();
             About();
+        }
+        else if( stopChange == 'n' )
+        {
+            stopChange = 'y';
         }
 
     }
